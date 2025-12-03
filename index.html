@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insurance Professionals of Tennessee - Quote Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f9ff;
+      color: #003366;
+      margin: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header img {
+      max-width: 200px;
+    }
+    h2 {
+      color: #003366;
+    }
+    .section {
+      border: 2px solid #d4af37;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      background-color: #003366;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d4af37;
+      color: #003366;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="Insurance Professionals of Tennessee Logo">
+    <h1>Insurance Quote Request</h1>
+  </header>
+
+  <form id="quoteForm" action="https://formspree.io/f/meoykwea" method="POST">
+    <!-- General Info -->
+    <div class="section">
+      <h2>General Information</h2>
+      <label>Name: <input type="text" name="name" required></label>
+      <label>Email: <input type="email" name="email" required></label>
+      <label>Phone: <input type="tel" name="phone" required></label>
+    </div>
+
+    <!-- Quote Type Selection -->
+    <div class="section">
+      <h2>Select Quote Types</h2>
+      <label><input type="checkbox" id="wcglCheck"> Workers Compensation & General Liability</label>
+      <label><input type="checkbox" id="autoCheck"> Auto Insurance</label>
+      <label><input type="checkbox" id="homeCheck"> Homeowners Insurance</label>
+    </div>
+
+    <!-- Workers Comp & GL -->
+    <div class="section" id="wcglFields" style="display:none;">
+      <h2>Workers Compensation & General Liability</h2>
+      <label>Type of Business Operation: <input type="text" name="businessType"></label>
+      <label>Weekly Payroll Estimate: <input type="number" id="weeklyPayroll" name="weeklyPayroll"></label>
+      <label>Annual Payroll (calculated × 40 weeks): 
+        <input type="number" id="annualPayroll" name="annualPayroll" readonly>
+      </label>
+      <label>Years of Continuous Coverage:
+        <select name="coverageYears">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5+">5+</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Auto Insurance -->
+<div class="section" id="autoFields" style="display:none;">
+  <h2>Auto Insurance</h2>
+  <label>Number of Drivers: <input type="number" id="numDrivers"></label>
+  <div id="driverDetails"></div>
+
+  <label>Number of Vehicles: <input type="number" id="numVehicles"></label>
+  <div id="vehicleDetails"></div>
+
+  <h3>Coverage Options</h3>
+  <label>Bodily Injury Limit (per person/per accident): 
+    <select name="bodilyInjury">
+      <option value="">-- Select Limit --</option>
+      <option value="25,000/50,000">$25,000 / $50,000</option>
+      <option value="50,000/100,000">$50,000 / $100,000</option>
+      <option value="100,000/300,000">$100,000 / $300,000</option>
+      <option value="250,000/500,000">$250,000 / $500,000</option>
+      <option value="500,000/500,000">$500,000 / $500,000</option>
+      <option value="1,000,000/1,000,000">$1,000,000 / $1,000,000</option>
+    </select>
+  </label>
+
+  <label>Property Damage Limit: 
+    <select name="propertyDamage">
+      <option value="">-- Select Limit --</option>
+      <option value="25,000">$25,000</option>
+      <option value="50,000">$50,000</option>
+      <option value="100,000">$100,000</option>
+      <option value="250,000">$250,000</option>
+      <option value="500,000">$500,000</option>
+      <option value="1,000,000">$1,000,000</option>
+    </select>
+  </label>
+
+  <label>Comprehensive Deductible: 
+    <select name="comprehensiveDeductible">
+      <option value="">-- Select Deductible --</option>
+      <option value="50">$50</option>
+      <option value="100">$100</option>
+      <option value="250">$250</option>
+      <option value="500">$500</option>
+      <option value="1,000">$1,000</option>
+      <option value="2,500">$2,500</option>
+    </select>
+  </label>
+
+  <label>Collision Deductible: 
+    <select name="collisionDeductible">
+      <option value="">-- Select Deductible --</option>
+      <option value="50">$50</option>
+      <option value="100">$100</option>
+      <option value="250">$250</option>
+      <option value="500">$500</option>
+      <option value="1,000">$1,000</option>
+      <option value="2,500">$2,500</option>
+    </select>
+  </label>
+</div>
+
+
+
+    <!-- Homeowners Insurance -->
+    <div class="section" id="homeFields" style="display:none;">
+      <h2>Homeowners Insurance</h2>
+      <label>Address: <input type="text" name="address"></label>
+      <iframe id="streetView" width="100%" height="200" style="margin-top:10px;" frameborder="0"></iframe>
+      <label>Square Footage: <input type="number" name="sqft"></label>
+      <label>Year Built: <input type="number" name="yearBuilt"></label>
+      <label>Number of Stories: <input type="number" name="stories"></label>
+      <label>Estimated Replacement Value: <input type="number" name="replacementValue"></label>
+    </div>
+
+    <button type="submit">Submit Quote Request</button>
+  </form>
+
+  <script>
+    const wcglCheck = document.getElementById('wcglCheck');
+    const autoCheck = document.getElementById('autoCheck');
+    const homeCheck = document.getElementById('homeCheck');
+    const wcglFields = document.getElementById('wcglFields');
+    const autoFields = document.getElementById('autoFields');
+    const homeFields = document.getElementById('homeFields');
+    const driverDetails = document.getElementById('driverDetails');
+    const vehicleDetails = document.getElementById('vehicleDetails');
+    const numDrivers = document.getElementById('numDrivers');
+    const numVehicles = document.getElementById('numVehicles');
+    const weeklyPayroll = document.getElementById('weeklyPayroll');
+    const annualPayroll = document.getElementById('annualPayroll');
+    const streetView = document.getElementById('streetView');
+
+    wcglCheck.addEventListener('change', () => {
+      wcglFields.style.display = wcglCheck.checked ? 'block' : 'none';
+    });
+    autoCheck.addEventListener('change', () => {
+      autoFields.style.display = autoCheck.checked ? 'block' : 'none';
+    });
+    homeCheck.addEventListener('change', () => {
+      homeFields.style.display = homeCheck.checked ? 'block' : 'none';
+    });
+
+    numDrivers.addEventListener('input', () => {
+      driverDetails.innerHTML = '';
+      for (let i = 0; i < numDrivers.value; i++) {
+        driverDetails.innerHTML += `
+          <label>Driver ${i+1} Name: <input type="text" name="driverName${i}"></label>
+          <label>Date of Birth: <input type="date" name="driverDOB${i}"></label>
+          <label>License/ID Number: <input type="text" name="driverID${i}"></label>
+        `;
+      }
+    });
+
+    numVehicles.addEventListener('input', () => {
+      vehicleDetails.innerHTML = '';
+      for (let i = 0; i < numVehicles.value; i++) {
+        vehicleDetails.innerHTML += `
+          <label>Vehicle ${i+1} Make/Model/Year: <input type="text" name="vehicle${i}"></label>
+          <label>VIN Number: <input type="text" name="vin${i}"></label>
+        `;
+      }
+    });
+
+    weeklyPayroll.addEventListener('input', () => {
+      const weekly = parseFloat(weeklyPayroll.value) || 0;
+      annualPayroll.value = weekly * 40;
+    });
+
+    document.querySelector('input[name="address"]').addEventListener('blur', (e) => {
+      const address = encodeURIComponent(e.target.value);
+      streetView.src = `https://www.google.com/maps/embed/v1/streetview?key=YOUR_API_KEY&location=${address}`;
+    });
+  </script>
+</body>
+</html>
