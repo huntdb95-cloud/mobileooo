@@ -1,227 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Insurance Professionals of Tennessee - Quote Form</title>
+  <meta charset="UTF-8" />
+  <title>Insurance Professionals of Tennessee - Weekend Request Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f9ff;
-      color: #003366;
-      margin: 20px;
+    :root {
+      --ipt-blue: #1c4e71;
+      --ipt-tan: #b7af74;
+      --ipt-soft: #81907a;
+      --ipt-border: #d7dddd;
+      --ipt-bg: #f8f7f2;
     }
+
+    /* MOBILE-FIRST BASE STYLES */
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--ipt-bg);
+      color: #333;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 16px 12px 32px;
+    }
+
     header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
-    header img {
-      max-width: 200px;
+
+    header .logo {
+      max-width: 220px;
+      width: 70%;
+      height: auto;
+      display: block;
+      margin: 0 auto 6px;
     }
-    h2 {
-      color: #003366;
+
+    header h1 {
+      margin: 4px 0 2px;
+      font-size: 1.1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ipt-blue);
+      font-weight: 500;
     }
-    .section {
-      border: 2px solid #d4af37;
-      padding: 15px;
-      margin-bottom: 20px;
+
+    header p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--ipt-soft);
+      letter-spacing: 0.08em;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 16px 14px 20px;
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.06);
+      border-top: 4px solid var(--ipt-tan);
+    }
+
+    .intro {
+      background: #f3f0e5;
+      border-left: 4px solid var(--ipt-blue);
+      padding: 10px 12px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      color: #444;
+    }
+
+    .intro strong {
+      color: var(--ipt-blue);
+    }
+
+    fieldset {
+      border: 1px solid var(--ipt-border);
       border-radius: 8px;
+      padding: 12px 10px 10px;
+      margin-bottom: 14px;
     }
+
+    legend {
+      padding: 0 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--ipt-blue);
+    }
+
+    .field-group {
+      margin-bottom: 10px;
+    }
+
     label {
       display: block;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px 9px;
+      border-radius: 4px;
+      border: 1px solid var(--ipt-border);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      background-color: #fff;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--ipt-blue);
+      box-shadow: 0 0 0 2px rgba(28, 78, 113, 0.12);
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .request-options label {
+      display: flex;
+      align-items: center;
+      padding: 6px 4px;
+      margin-bottom: 4px;
+      border-radius: 4px;
+    }
+
+    .request-options label:hover {
+      background: #f6f5ee;
+    }
+
+    .request-options input[type="radio"] {
+      margin-right: 8px;
+      accent-color: var(--ipt-blue);
+      flex-shrink: 0;
+    }
+
+    .section {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+    }
+
+    .section h2 {
+      margin-top: 0;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: var(--ipt-blue);
+      font-weight: 600;
+    }
+
+    .section p {
+      font-size: 0.85rem;
+      margin: 4px 0 10px;
+      color: #555;
+    }
+
+    .carrier-list {
+      padding-left: 18px;
+      margin: 6px 0 10px;
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    .carrier-list li {
+      margin-bottom: 2px;
+    }
+
+    a {
+      color: var(--ipt-blue);
+    }
+
+    .button-link,
+    button[type="submit"] {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 5px;
+      background: var(--ipt-blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-align: center;
+      width: 100%;           /* full-width buttons on mobile */
+      box-sizing: border-box;
+    }
+
+    .button-link:hover,
+    button[type="submit"]:hover {
+      background: #153b54;
+    }
+
+    .submit-row {
+      margin-top: 16px;
+    }
+
+    .disclaimer {
+      font-size: 0.75rem;
+      color: #666;
       margin-top: 10px;
     }
-    input, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
+
+    .hidden {
+      display: none;
     }
-    button {
-      background-color: #003366;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+
+    /* LARGER SCREEN TWEAKS */
+    @media (min-width: 640px) {
+      .container {
+        padding: 20px 16px 40px;
+      }
+
+      header .logo {
+        max-width: 260px;
+        width: auto;
+      }
+
+      header h1 {
+        font-size: 1.3rem;
+      }
+
+      header p {
+        font-size: 0.9rem;
+      }
+
+      .card {
+        padding: 20px 20px 24px;
+      }
+
+      .button-link,
+      button[type="submit"] {
+        width: auto;         /* normal width buttons on tablet/desktop */
+      }
     }
-    button:hover {
-      background-color: #d4af37;
-      color: #003366;
+
+    @media (min-width: 900px) {
+      .card {
+        padding: 22px 24px 26px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.jpg" alt="Insurance Professionals of Tennessee Logo">
-    <h1>Insurance Quote Request</h1>
-  </header>
+  <div class="container">
+    <header>
+      <!-- Replace ipt-logo.png with the actual filename/path of your logo -->
+      <img src="logo.jpg" alt="Insurance Professionals of Tennessee Logo" class="logo" />
+      <h1>Insurance Professionals of Tennessee</h1>
+      <p>Weekend &amp; After-Hours Request Form</p>
+    </header>
 
-  <form id="quoteForm" action="https://formspree.io/f/meoykwea" method="POST">
-    <!-- General Info -->
-    <div class="section">
-      <h2>General Information</h2>
-      <label>Name: <input type="text" name="name" required></label>
-      <label>Email: <input type="email" name="email" required></label>
-      <label>Phone: <input type="tel" name="phone" required></label>
+    <div class="card">
+      <div class="intro">
+        <strong>Thank you for contacting us!</strong>
+        <p>
+          Our office is currently closed. Please use this page to let us know how we can help,
+          and we will respond within <strong>one business day</strong> (Monday–Friday, 7:00am–5:00pm).
+        </p>
+      </div>
+
+      <!-- Add your form "action" and "method" here when you're ready -->
+      <form id="requestForm">
+        <!-- Contact Info -->
+        <fieldset>
+          <legend>Your Contact Information</legend>
+          <div class="field-group">
+            <label for="customerName">Your Name</label>
+            <input type="text" id="customerName" name="customerName" required />
+          </div>
+          <div class="field-group">
+            <label for="customerEmail">Email</label>
+            <input type="email" id="customerEmail" name="customerEmail" required />
+          </div>
+          <div class="field-group">
+            <label for="customerPhone">Phone</label>
+            <input type="tel" id="customerPhone" name="customerPhone" />
+          </div>
+        </fieldset>
+
+        <!-- Request Type -->
+        <fieldset class="request-options">
+          <legend>How can we help you?</legend>
+          <label>
+            <input type="radio" name="requestType" value="audit" required />
+            Audit
+          </label>
+          <label>
+            <input type="radio" name="requestType" value="billing" />
+            Billing or Payments
+          </label>
+          <label>
+            <input type="radio" name="requestType" value="certificate" />
+            Certificate Request
+          </label>
+          <label>
+            <input type="radio" name="requestType" value="claim" />
+            Claim
+          </label>
+          <label>
+            <input type="radio" name="requestType" value="newQuote" />
+            New Quote
+          </label>
+          <label>
+            <input type="radio" name="requestType" value="policyChange" />
+            Policy Change
+          </label>
+          <label>
+            <input type="radio" name="requestType" value="other" />
+            Other Question
+          </label>
+        </fieldset>
+
+        <!-- Audit Section -->
+        <div id="auditSection" class="section hidden">
+          <h2>Audit Request</h2>
+          <p>
+            For audit questions during business hours (7:00am–5:00pm, Monday–Friday), you may:
+          </p>
+          <p>
+            Email: <a href="mailto:audits@go-ipt.com">audits@go-ipt.com</a><br />
+            Phone: <strong>(615) 324-0503</strong>
+          </p>
+          <div class="field-group">
+            <label for="auditDetails">Tell us about your audit request (optional)</label>
+            <textarea id="auditDetails" name="auditDetails" rows="4"></textarea>
+          </div>
+        </div>
+
+        <!-- Billing / Payments Section -->
+        <div id="billingSection" class="section hidden">
+          <h2>Billing or Payments</h2>
+          <p>
+            During business hours (7:00am–5:00pm, Monday–Friday), you can call our main office for
+            billing questions:
+          </p>
+          <p>
+            Office: <strong>(615) 324-0500</strong>
+          </p>
+          <p>You may also contact your insurance carrier directly:</p>
+          <ul class="carrier-list">
+            <li>Carrier 1 – (XXX) XXX-XXXX</li>
+            <li>Carrier 2 – (XXX) XXX-XXXX</li>
+            <li>Carrier 3 – (XXX) XXX-XXXX</li>
+            <li>Carrier 4 – (XXX) XXX-XXXX</li>
+            <li>Carrier 5 – (XXX) XXX-XXXX</li>
+            <li>Carrier 6 – (XXX) XXX-XXXX</li>
+            <li>Carrier 7 – (XXX) XXX-XXXX</li>
+            <li>Carrier 8 – (XXX) XXX-XXXX</li>
+            <li>Carrier 9 – (XXX) XXX-XXXX</li>
+            <li>Carrier 10 – (XXX) XXX-XXXX</li>
+          </ul>
+          <div class="field-group">
+            <label for="billingDetails">Tell us about your billing or payment question</label>
+            <textarea id="billingDetails" name="billingDetails" rows="4"></textarea>
+          </div>
+        </div>
+
+        <!-- Certificate Request Section -->
+        <div id="certificateSection" class="section hidden">
+          <h2>Certificate Request</h2>
+          <p>
+            Please complete the fields below and we’ll send your certificate as soon as possible,
+            typically within one business day.
+          </p>
+          <div class="field-group">
+            <label for="certCustomerName">Customer Name</label>
+            <input type="text" id="certCustomerName" name="certCustomerName" required />
+          </div>
+          <div class="field-group">
+            <label for="certHolderName">Name of Certificate Holder</label>
+            <input type="text" id="certHolderName" name="certHolderName" required />
+          </div>
+          <div class="field-group">
+            <label for="certHolderAddress">Address of Certificate Holder</label>
+            <textarea id="certHolderAddress" name="certHolderAddress" rows="2" required></textarea>
+          </div>
+          <div class="field-group">
+            <label for="certHolderEmail">Certificate Holder's Email Address</label>
+            <input type="email" id="certHolderEmail" name="certHolderEmail" required />
+          </div>
+        </div>
+
+        <!-- Claim Section -->
+        <div id="claimSection" class="section hidden">
+          <h2>Claim</h2>
+          <p>
+            For claims during business hours (7:00am–5:00pm, Monday–Friday), you may call:
+          </p>
+          <p>
+            Claims/Audit: <strong>(615) 324-0503</strong>
+          </p>
+          <p>You can also contact your insurance carrier directly to report a claim:</p>
+          <ul class="carrier-list">
+            <li>Carrier 1 – (XXX) XXX-XXXX</li>
+            <li>Carrier 2 – (XXX) XXX-XXXX</li>
+            <li>Carrier 3 – (XXX) XXX-XXXX</li>
+            <li>Carrier 4 – (XXX) XXX-XXXX</li>
+            <li>Carrier 5 – (XXX) XXX-XXXX</li>
+            <li>Carrier 6 – (XXX) XXX-XXXX</li>
+            <li>Carrier 7 – (XXX) XXX-XXXX</li>
+            <li>Carrier 8 – (XXX) XXX-XXXX</li>
+            <li>Carrier 9 – (XXX) XXX-XXXX</li>
+            <li>Carrier 10 – (XXX) XXX-XXXX</li>
+          </ul>
+          <div class="field-group">
+            <label for="claimDetails">Brief description of what happened</label>
+            <textarea id="claimDetails" name="claimDetails" rows="4"></textarea>
+          </div>
+        </div>
+
+        <!-- New Quote Section -->
+        <div id="quoteSection" class="section hidden">
+          <h2>New Quote</h2>
+          <p>
+            For a new quote, please complete our dedicated online form using the link below.
+            We’ll review your information and get back to you within one business day.
+          </p>
+          <p>
+            <a
+              href="https://huntdb95-cloud.github.io/quoterequest/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button-link"
+            >
+              Start New Quote Request
+            </a>
+          </p>
+        </div>
+
+        <!-- Policy Change Section -->
+        <div id="policyChangeSection" class="section hidden">
+          <h2>Policy Change</h2>
+          <p>
+            For policy changes during business hours (7:00am–5:00pm, Monday–Friday), you may:
+          </p>
+          <p>
+            Email: <a href="mailto:support@go-ipt.com">support@go-ipt.com</a><br />
+            Phone: <strong>(615) 301-8564</strong><br />
+            Or contact your agent directly.
+          </p>
+          <div class="field-group">
+            <label for="policyChangeDetails">Describe the change you'd like to make</label>
+            <textarea id="policyChangeDetails" name="policyChangeDetails" rows="4"></textarea>
+          </div>
+        </div>
+
+        <!-- Other Question Section -->
+        <div id="otherSection" class="section hidden">
+          <h2>Other Question</h2>
+          <div class="field-group">
+            <label for="otherDetails">Please tell us how we can help</label>
+            <textarea id="otherDetails" name="otherDetails" rows="4"></textarea>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="submit-row">
+          <button type="submit" id="submitButton">Submit Request</button>
+        </div>
+
+        <p class="disclaimer">
+          This page is intended for non-emergency requests. For urgent matters or after-hours
+          emergencies, please contact your insurance carrier directly.
+        </p>
+      </form>
     </div>
-
-    <!-- Quote Type Selection -->
-    <div class="section">
-      <h2>Select Quote Types</h2>
-      <label><input type="checkbox" id="wcglCheck"> Workers Compensation & General Liability</label>
-      <label><input type="checkbox" id="autoCheck"> Auto Insurance</label>
-      <label><input type="checkbox" id="homeCheck"> Homeowners Insurance</label>
-    </div>
-
-    <!-- Workers Comp & GL -->
-    <div class="section" id="wcglFields" style="display:none;">
-      <h2>Workers Compensation & General Liability</h2>
-      <label>Type of Business Operation: <input type="text" name="businessType"></label>
-      <label>Weekly Payroll Estimate: <input type="number" id="weeklyPayroll" name="weeklyPayroll"></label>
-      <label>Annual Payroll (calculated × 40 weeks): 
-        <input type="number" id="annualPayroll" name="annualPayroll" readonly>
-      </label>
-      <label>Years of Continuous Coverage:
-        <select name="coverageYears">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5+">5+</option>
-        </select>
-      </label>
-    </div>
-
-    <!-- Auto Insurance -->
-<div class="section" id="autoFields" style="display:none;">
-  <h2>Auto Insurance</h2>
-  <label>Number of Drivers: <input type="number" id="numDrivers"></label>
-  <div id="driverDetails"></div>
-
-  <label>Number of Vehicles: <input type="number" id="numVehicles"></label>
-  <div id="vehicleDetails"></div>
-
-  <h3>Coverage Options</h3>
-  <label>Bodily Injury Limit (per person/per accident): 
-    <select name="bodilyInjury">
-      <option value="">-- Select Limit --</option>
-      <option value="25,000/50,000">$25,000 / $50,000</option>
-      <option value="50,000/100,000">$50,000 / $100,000</option>
-      <option value="100,000/300,000">$100,000 / $300,000</option>
-      <option value="250,000/500,000">$250,000 / $500,000</option>
-      <option value="500,000/500,000">$500,000 / $500,000</option>
-      <option value="1,000,000/1,000,000">$1,000,000 / $1,000,000</option>
-    </select>
-  </label>
-
-  <label>Property Damage Limit: 
-    <select name="propertyDamage">
-      <option value="">-- Select Limit --</option>
-      <option value="25,000">$25,000</option>
-      <option value="50,000">$50,000</option>
-      <option value="100,000">$100,000</option>
-      <option value="250,000">$250,000</option>
-      <option value="500,000">$500,000</option>
-      <option value="1,000,000">$1,000,000</option>
-    </select>
-  </label>
-
-  <label>Comprehensive Deductible: 
-    <select name="comprehensiveDeductible">
-      <option value="">-- Select Deductible --</option>
-      <option value="50">$50</option>
-      <option value="100">$100</option>
-      <option value="250">$250</option>
-      <option value="500">$500</option>
-      <option value="1,000">$1,000</option>
-      <option value="2,500">$2,500</option>
-    </select>
-  </label>
-
-  <label>Collision Deductible: 
-    <select name="collisionDeductible">
-      <option value="">-- Select Deductible --</option>
-      <option value="50">$50</option>
-      <option value="100">$100</option>
-      <option value="250">$250</option>
-      <option value="500">$500</option>
-      <option value="1,000">$1,000</option>
-      <option value="2,500">$2,500</option>
-    </select>
-  </label>
-</div>
-
-
-
-    <!-- Homeowners Insurance -->
-    <div class="section" id="homeFields" style="display:none;">
-      <h2>Homeowners Insurance</h2>
-      <label>Address: <input type="text" name="address"></label>
-      <iframe id="streetView" width="100%" height="200" style="margin-top:10px;" frameborder="0"></iframe>
-      <label>Square Footage: <input type="number" name="sqft"></label>
-      <label>Year Built: <input type="number" name="yearBuilt"></label>
-      <label>Number of Stories: <input type="number" name="stories"></label>
-      <label>Estimated Replacement Value: <input type="number" name="replacementValue"></label>
-    </div>
-
-    <button type="submit">Submit Quote Request</button>
-  </form>
+  </div>
 
   <script>
-    const wcglCheck = document.getElementById('wcglCheck');
-    const autoCheck = document.getElementById('autoCheck');
-    const homeCheck = document.getElementById('homeCheck');
-    const wcglFields = document.getElementById('wcglFields');
-    const autoFields = document.getElementById('autoFields');
-    const homeFields = document.getElementById('homeFields');
-    const driverDetails = document.getElementById('driverDetails');
-    const vehicleDetails = document.getElementById('vehicleDetails');
-    const numDrivers = document.getElementById('numDrivers');
-    const numVehicles = document.getElementById('numVehicles');
-    const weeklyPayroll = document.getElementById('weeklyPayroll');
-    const annualPayroll = document.getElementById('annualPayroll');
-    const streetView = document.getElementById('streetView');
+    (function () {
+      const sections = {
+        audit: document.getElementById("auditSection"),
+        billing: document.getElementById("billingSection"),
+        certificate: document.getElementById("certificateSection"),
+        claim: document.getElementById("claimSection"),
+        newQuote: document.getElementById("quoteSection"),
+        policyChange: document.getElementById("policyChangeSection"),
+        other: document.getElementById("otherSection"),
+      };
 
-    wcglCheck.addEventListener('change', () => {
-      wcglFields.style.display = wcglCheck.checked ? 'block' : 'none';
-    });
-    autoCheck.addEventListener('change', () => {
-      autoFields.style.display = autoCheck.checked ? 'block' : 'none';
-    });
-    homeCheck.addEventListener('change', () => {
-      homeFields.style.display = homeCheck.checked ? 'block' : 'none';
-    });
+      const radios = document.querySelectorAll('input[name="requestType"]');
+      const submitButton = document.getElementById("submitButton");
 
-    numDrivers.addEventListener('input', () => {
-      driverDetails.innerHTML = '';
-      for (let i = 0; i < numDrivers.value; i++) {
-        driverDetails.innerHTML += `
-          <label>Driver ${i+1} Name: <input type="text" name="driverName${i}"></label>
-          <label>Date of Birth: <input type="date" name="driverDOB${i}"></label>
-          <label>License/ID Number: <input type="text" name="driverID${i}"></label>
-        `;
+      function showSection(value) {
+        Object.keys(sections).forEach((key) => {
+          sections[key].classList.add("hidden");
+        });
+
+        if (sections[value]) {
+          sections[value].classList.remove("hidden");
+        }
+
+        if (value === "newQuote") {
+          submitButton.classList.add("hidden");
+        } else {
+          submitButton.classList.remove("hidden");
+        }
       }
-    });
 
-    numVehicles.addEventListener('input', () => {
-      vehicleDetails.innerHTML = '';
-      for (let i = 0; i < numVehicles.value; i++) {
-        vehicleDetails.innerHTML += `
-          <label>Vehicle ${i+1} Make/Model/Year: <input type="text" name="vehicle${i}"></label>
-          <label>VIN Number: <input type="text" name="vin${i}"></label>
-        `;
-      }
-    });
-
-    weeklyPayroll.addEventListener('input', () => {
-      const weekly = parseFloat(weeklyPayroll.value) || 0;
-      annualPayroll.value = weekly * 40;
-    });
-
-    document.querySelector('input[name="address"]').addEventListener('blur', (e) => {
-      const address = encodeURIComponent(e.target.value);
-      streetView.src = `https://www.google.com/maps/embed/v1/streetview?key=YOUR_API_KEY&location=${address}`;
-    });
+      radios.forEach((radio) => {
+        radio.addEventListener("change", function () {
+          showSection(this.value);
+        });
+      });
+    })();
   </script>
 </body>
 </html>
